@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ManageSleep : MonoBehaviour
 {
 
-    [SerializeField] Text hoursInput;
-    [SerializeField] Text minutesInput;
-    [SerializeField] Text totalHoursSleptText;
-    [SerializeField] Text totalMinutesSleptText;
+    [SerializeField] TMP_InputField hoursInput;
+    [SerializeField] TMP_InputField minutesInput;
+    [SerializeField] TextMeshProUGUI totalHoursSleptText;
+    [SerializeField] TextMeshProUGUI totalMinutesSleptText;
 
     public void saveTimeSlept() 
     {

@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ManageWater : MonoBehaviour
 {
-    [SerializeField] Text waterInput;
-    [SerializeField] Text totalWaterText;
+    [SerializeField] TMP_InputField waterInput;
+    [SerializeField] TextMeshProUGUI totalWaterText;
     [SerializeField] WaterTankFill waterTankFill;
 
     public void saveWater()
@@ -42,7 +43,7 @@ public class ManageWater : MonoBehaviour
     {
         int totalWater = GameDataManager.getWaterSaved();
 
-        totalWaterText.text = totalWater.ToString();
+        totalWaterText.text = totalWater.ToString()+"ml";
     }
 
     void updateWaterTank() 
