@@ -26,16 +26,17 @@ public class ManageSleep : MonoBehaviour
 
     bool validateInputs() 
     {
-        if (hoursInput.text == "")
+        if (hoursInput.text == "" && minutesInput.text == "")
         {
-            //Debug.Log("Hours can't be empty!");
+            //Debug.Log("Hours and minutes can't be empty!");
             return false;
         }
+        /*
         if (minutesInput.text == "")
         {
             //Debug.Log("Minutes can't be empty!");
             return false;
-        }
+        }*/
         if (int.Parse(hoursInput.text) < 0)
         {
             //Debug.Log("Hours can't be negative!");
