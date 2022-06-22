@@ -14,9 +14,16 @@ public class ManageSleep : MonoBehaviour
     public void saveTimeSlept() 
     {
         if (!validateInputs()) { return; }
-
-        int hours = int.Parse(hoursInput.text);
-        int minutes = int.Parse(minutesInput.text);
+        int hours = 0;
+        int minutes = 0;
+        if (hoursInput.text != "")
+        {
+            hours = int.Parse(hoursInput.text);
+        }
+        if(minutesInput.text != "")
+        {
+            minutes = int.Parse(minutesInput.text);
+        }
 
         GameDataManager.addMinutesSleepSaved((hours*60) + minutes);
 
@@ -37,21 +44,28 @@ public class ManageSleep : MonoBehaviour
             //Debug.Log("Minutes can't be empty!");
             return false;
         }*/
-        if (int.Parse(hoursInput.text) < 0)
+        if(hoursInput.text != "")
         {
-            //Debug.Log("Hours can't be negative!");
-            return false;
+            if (int.Parse(hoursInput.text) < 0)
+            {
+                //Debug.Log("Hours can't be negative!");
+                return false;
+            }
         }
-        if (int.Parse(minutesInput.text) < 0)
+        if(minutesInput.text != "")
         {
-            //Debug.Log("Minutes can't be negative!");
-            return false;
+            if (int.Parse(minutesInput.text) < 0)
+            {
+                //Debug.Log("Minutes can't be negative!");
+                return false;
+            }
+            if (int.Parse(minutesInput.text) >= 60)
+            {
+                //Debug.Log("Minutes can't be greater than 59!");
+                return false;
+            }
         }
-        if (int.Parse(minutesInput.text) >= 60)
-        {
-            //Debug.Log("Minutes can't be greater than 59!");
-            return false;
-        }
+        
 
         return true;
     }
