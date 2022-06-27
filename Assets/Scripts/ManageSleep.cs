@@ -12,6 +12,10 @@ public class ManageSleep : MonoBehaviour
     [SerializeField] TextMeshProUGUI totalHoursSleptText;
     [SerializeField] TextMeshProUGUI totalMinutesSleptText;
 
+    [SerializeField] AudioManager audioManager;
+
+    private bool dailyObjMet = false;
+
     public void saveTimeSlept() 
     {
         if (!validateInputs()) { return; }
@@ -29,7 +33,21 @@ public class ManageSleep : MonoBehaviour
         GameDataManager.addMinutesSleepSaved((hours*60) + minutes);
 
         updateSleepTexts();
+        playConfirmationSound();
+        dailyObjMet = GameDataManager.getDailySleepObjective();
         //Debug.Log("OK");
+    }
+
+    public void playConfirmationSound()
+    {
+        if (GameDataManager.getTotalMinutesSleepSaved() >= GameDataManager.DAILY_SLEEP_AMMOUNT && !dailyObjMet)
+        {
+            audioManager.playDailyObjective();
+        }
+        else
+        {
+            audioManager.playWaterSleepAdded();
+        }
     }
 
     bool validateInputs() 

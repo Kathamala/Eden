@@ -10,6 +10,10 @@ public class ManageWater : MonoBehaviour
     [SerializeField] TextMeshProUGUI totalWaterText;
     [SerializeField] WaterTankFill waterTankFill;
 
+    [SerializeField] AudioManager audioManager;
+
+    private bool dailyObjMet = false;
+
     public void saveWater()
     {
         if (!validateInputs()) { return; }
@@ -20,7 +24,20 @@ public class ManageWater : MonoBehaviour
 
         updateWaterTexts();
         updateWaterTank();
+        playConfirmationSound();
+        dailyObjMet = GameDataManager.getDailyWaterObjective();
         //Debug.Log("OK");
+    }
+
+    public void playConfirmationSound() 
+    {
+        if (GameDataManager.getWaterSaved() >= GameDataManager.DAILY_WATER_AMMOUNT && !dailyObjMet)
+        {
+            audioManager.playDailyObjective();
+        } else 
+        {
+            audioManager.playWaterSleepAdded();
+        }
     }
 
     bool validateInputs()

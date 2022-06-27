@@ -10,6 +10,9 @@ public class GameDataManager : MonoBehaviour
     static int waterSaved = 0;
     static int minutesSleepSaved = 0;
 
+    static bool dailyWaterObjective;
+    static bool dailySleepObjective;
+
     public static int getWaterSaved() 
     {
         return waterSaved;
@@ -18,6 +21,7 @@ public class GameDataManager : MonoBehaviour
     public static void addWaterSaved(int waterAmmount)
     {
         if(waterAmmount >= 0) waterSaved += waterAmmount;
+        if (waterSaved >= DAILY_WATER_AMMOUNT) dailyWaterObjective = true;
     }
 
     public static int getTotalMinutesSleepSaved()
@@ -37,5 +41,16 @@ public class GameDataManager : MonoBehaviour
     public static void addMinutesSleepSaved(int sleepAmmount)
     {
         if (sleepAmmount >= 0) minutesSleepSaved += sleepAmmount;
+        if (minutesSleepSaved >= DAILY_SLEEP_AMMOUNT) dailySleepObjective = true;
+    }
+
+    public static bool getDailyWaterObjective() 
+    {
+        return dailyWaterObjective;
+    }
+
+    public static bool getDailySleepObjective()
+    {
+        return dailySleepObjective;
     }
 }
