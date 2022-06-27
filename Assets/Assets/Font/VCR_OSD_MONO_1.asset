@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!21 &-3754137978080027094
+--- !u!21 &-3889516511405845279
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -32,7 +32,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: -3357257698432633456}
+        m_Texture: {fileID: -1316063761549247829}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OutlineTex:
@@ -103,7 +103,7 @@ Material:
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _UnderlayColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_BuildTextureStacks: []
---- !u!28 &-3357257698432633456
+--- !u!28 &-1316063761549247829
 Texture2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: VCR_OSD_MONO_1
   m_EditorClassIdentifier: 
   hashCode: -597227310
-  material: {fileID: -3754137978080027094}
+  material: {fileID: -3889516511405845279}
   materialHashCode: -1457091406
   m_Version: 1.1.0
   m_SourceFontFileGUID: 633d2124a9ea0dc49bc6268614f6816d
@@ -3604,7 +3604,7 @@ MonoBehaviour:
     m_GlyphIndex: 193
     m_Scale: 1
   m_AtlasTextures:
-  - {fileID: -3357257698432633456}
+  - {fileID: -1316063761549247829}
   m_AtlasTextureIndex: 0
   m_IsMultiAtlasTexturesEnabled: 0
   m_ClearDynamicDataOnBuild: 0
