@@ -7,11 +7,13 @@ using TMPro;
 public class ManageStore : MonoBehaviour
 {
     [SerializeField] int[] plantsPrices;
-    [SerializeField] GameObject[] plants;
+    [SerializeField] GameObject[] seedTypes;
 
     [SerializeField] TextMeshProUGUI dreamcoinText;
 
     [SerializeField] GameObject plantsOwnedHolder;
+
+    [SerializeField] GameObject plant;
 
     // Start is called before the first frame update
     void Start()
@@ -21,27 +23,30 @@ public class ManageStore : MonoBehaviour
 
     void SetPrices() 
     {
-        for (int i = 0; i < plants.Length; i++)
+        for (int i = 0; i < seedTypes.Length; i++)
         {
-            plants[i].transform.Find("DreamcoinHolder").Find("DreamcoinsText").gameObject.GetComponent<TextMeshProUGUI>().text = plantsPrices[i].ToString();
+            seedTypes[i].transform.Find("DreamcoinHolder").Find("DreamcoinsText").gameObject.GetComponent<TextMeshProUGUI>().text = plantsPrices[i].ToString();
         }
     }
 
     public void buyPlant(int plantIndex) 
     {
-        if (!GameDataManager.removeCoins(plantsPrices[plantIndex - 1]))
+        if (!GameDataManager.removeCoins(plantsPrices[plantIndex]))
         {
             Debug.Log("Você não têm moedas suficientes.");
             return;
         }
-        if (!GameDataManager.addPlantsOwned(plants[plantIndex - 1]))
+        GameObject newPlant = Instantiate(plant);
+        if (!GameDataManager.addPlantsOwned(newPlant))
         {
             Debug.Log("Não há mais espaço para plantas.");
             return;
+        }
+        else
+        {
+            updateCoinsText();
+            addPlantToMainPanel(plantIndex, newPlant);
         };
-
-        updateCoinsText();
-        addPlantToMainPanel(plantIndex);
     }
 
     void updateCoinsText()
@@ -51,13 +56,10 @@ public class ManageStore : MonoBehaviour
         dreamcoinText.text = totalDreamcoins.ToString();
     }
 
-    void addPlantToMainPanel(int plantIndex) 
+    void addPlantToMainPanel(int plantTypeIndex, GameObject newPlant) 
     {
-        GameObject plant = Instantiate(plants[plantIndex - 1]);
-        Destroy(plant.GetComponent<Button>());
-        plant.transform.DetachChildren();
-        plant.transform.SetParent(plantsOwnedHolder.transform);
-
-        plant.GetComponent<RectTransform>().position = plantsOwnedHolder.transform.GetChild(GameDataManager.getPlantsOwned().Count-1).GetComponent<RectTransform>().position;
+        newPlant.transform.SetParent(plantsOwnedHolder.transform);
+        newPlant.GetComponent<PlantBehavior>().setPlantType(plantTypeIndex);
+        newPlant.GetComponent<RectTransform>().position = plantsOwnedHolder.transform.GetChild(GameDataManager.getPlantsOwned().Count-1).GetComponent<RectTransform>().position;
     }
 }
