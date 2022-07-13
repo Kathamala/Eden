@@ -11,7 +11,7 @@ public class GameDataManager : MonoBehaviour
     static int waterSaved = 0;
     static int minutesSleepSaved = 0;
 
-    static int coins = 0;
+    static int coins = 10;
 
     static bool dailyWaterObjective;
     static bool dailySleepObjective;
