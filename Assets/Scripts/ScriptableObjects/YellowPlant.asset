@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f2776c2c6880e47bc82311be8ea2b1, type: 3}
   m_Name: YellowPlant
   m_EditorClassIdentifier: 
-  <Sprites>k__BackingField: []
-  <waterLevels>k__BackingField: 
+  <Sprites>k__BackingField:
+  - {fileID: -381736287078047426, guid: ca63d9f9887c223428b531ce9276ecde, type: 3}
+  - {fileID: -3242518452815526463, guid: ca63d9f9887c223428b531ce9276ecde, type: 3}
+  - {fileID: -8830445229908893377, guid: ca63d9f9887c223428b531ce9276ecde, type: 3}
+  - {fileID: 4660122339068852323, guid: ca63d9f9887c223428b531ce9276ecde, type: 3}
+  <waterLevels>k__BackingField: d0070000a00f000070170000
