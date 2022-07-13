@@ -6,26 +6,31 @@ public class ManagePanelSwitch : MonoBehaviour
 {
     [SerializeField] GameObject waterPanel;
     [SerializeField] GameObject sleepPanel;
+    [SerializeField] GameObject storePanel;
 
     [SerializeField] AudioManager audioManager;
 
     public void openWaterPanel() 
     {
         waterPanel.gameObject.SetActive(true);
-        sleepPanel.gameObject.SetActive(false);
         audioManager.playOpenMenu();
 
     }
     public void openSleepPanel()
     {
-        waterPanel.gameObject.SetActive(false);
         sleepPanel.gameObject.SetActive(true);
+        audioManager.playOpenMenu();
+    }
+    public void openStorePanel()
+    {
+        storePanel.gameObject.SetActive(true);
         audioManager.playOpenMenu();
     }
     public void openMainPanel()
     {
         waterPanel.gameObject.SetActive(false);
         sleepPanel.gameObject.SetActive(false);
+        storePanel.gameObject.SetActive(false);
         audioManager.playCloseMenu();
     }
 }

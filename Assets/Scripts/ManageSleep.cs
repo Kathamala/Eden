@@ -12,6 +12,8 @@ public class ManageSleep : MonoBehaviour
     [SerializeField] TextMeshProUGUI totalHoursSleptText;
     [SerializeField] TextMeshProUGUI totalMinutesSleptText;
 
+    [SerializeField] TextMeshProUGUI dreamcoinText;
+
     [SerializeField] AudioManager audioManager;
 
     private bool dailyObjMet = false;
@@ -31,8 +33,10 @@ public class ManageSleep : MonoBehaviour
         }
 
         GameDataManager.addMinutesSleepSaved((hours*60) + minutes);
+        GameDataManager.addCoins(hours);
 
         updateSleepTexts();
+        updateCoinsText();
         playConfirmationSound();
         dailyObjMet = GameDataManager.getDailySleepObjective();
         //Debug.Log("OK");
@@ -96,5 +100,12 @@ public class ManageSleep : MonoBehaviour
 
         totalHoursSleptText.text = totalHours.ToString();
         totalMinutesSleptText.text = totalMinutes.ToString();
+    }
+
+    void updateCoinsText()
+    {
+        int totalDreamcoins = GameDataManager.getCoins();
+
+        dreamcoinText.text = totalDreamcoins.ToString();
     }
 }
