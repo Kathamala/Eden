@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameDataManager : MonoBehaviour
 {
     public const int DAILY_WATER_AMMOUNT = 3000;
-    public const int DAILY_SLEEP_AMMOUNT = 480;
+    public const int DAILY_SLEEP_AMMOUNT = 8;
     public const int MAX_PLANTS = 12;
 
     static int waterSaved = 0;
@@ -95,5 +95,13 @@ public class GameDataManager : MonoBehaviour
 
         plantsOwned.Add(plant);
         return true;
+    }
+
+    public static void StartNewDay()
+    {
+        waterSaved = 0;
+        minutesSleepSaved = 0;
+        dailyWaterObjective = false;
+        dailySleepObjective = false;
     }
 }
