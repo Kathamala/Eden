@@ -14,8 +14,15 @@ public class ManageWater : MonoBehaviour
 
     private bool dailyObjMet = false;
 
+    private void OnEnable()
+    {
+        updateWaterTexts();
+        updateWaterTank();
+    }
+
     public void saveWater()
     {
+        if (GameDataManager.getDailyWaterObjective()) return;
         if (!validateInputs()) { return; }
 
         int water = int.Parse(waterInput.text);

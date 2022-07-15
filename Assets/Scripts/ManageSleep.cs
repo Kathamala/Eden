@@ -18,8 +18,15 @@ public class ManageSleep : MonoBehaviour
 
     private bool dailyObjMet = false;
 
+    private void OnEnable()
+    {
+        updateSleepTexts();
+    }
+
     public void saveTimeSlept() 
     {
+        if (GameDataManager.getDailySleepObjective())
+            return;
         if (!validateInputs()) { return; }
         int hours = 0;
         int minutes = 0;
