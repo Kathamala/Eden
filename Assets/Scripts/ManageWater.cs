@@ -21,7 +21,7 @@ public class ManageWater : MonoBehaviour
         int water = int.Parse(waterInput.text);
 
         GameDataManager.addWaterSaved(water);
-
+        EventManager.UpdateWaterDrank(water);
         updateWaterTexts();
         updateWaterTank();
         playConfirmationSound();
